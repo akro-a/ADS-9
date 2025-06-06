@@ -1,9 +1,9 @@
 // Copyright 2022 NNTU-CS
-#include "tree.h"
-
 #include <algorithm>
 #include <iostream>
 #include <vector>
+
+#include "tree.h"
 
 static void Backtrack(const std::vector<char>& elems,
                       std::vector<bool>& used,
@@ -51,22 +51,25 @@ size_t factorial(int n) {
 
 std::vector<char> getPerm2(PMTree& tree, int num) {
   int n = static_cast<int>(tree.input.size());
-  if (num < 1 || num > static_cast<int>(factorial(n))) {
+  size_t total = factorial(n);
+  if (num < 1 || num > static_cast<int>(total)) {
     return {};
   }
   std::vector<char> elems = tree.input;
   std::vector<char> result;
   int index = num - 1;
   size_t fact = factorial(n - 1);
+
   for (int i = n; i > 0; --i) {
     size_t pos = index / fact;
     result.push_back(elems[pos]);
     elems.erase(elems.begin() + pos);
     if (i - 1 > 0) {
       index %= fact;
-      fact = factorial(i - 1);
+      fact /= static_cast<size_t>(i - 1);
     }
   }
+
   return result;
 }
 
