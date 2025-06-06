@@ -1,6 +1,6 @@
 // Copyright 2022 NNTU-CS
-#ifndef TREE_H_
-#define TREE_H_
+#ifndef INCLUDE_TREE_H_
+#define INCLUDE_TREE_H_
 
 #include <vector>
 
@@ -28,4 +28,4 @@ std::vector<char> getPerm1(PMTree& tree, int num);
 std::vector<char> getPerm2(PMTree& tree, int num);
 size_t factorial(int n);
 
-#endif  // TREE_H_
+#endif  // INCLUDE_TREE_H_
